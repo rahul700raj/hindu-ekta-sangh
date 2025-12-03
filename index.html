@@ -351,6 +351,35 @@
             transform: translateX(5px);
         }
 
+        /* Contact Info Styles */
+        .contact-info {
+            line-height: 2.2;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 17px;
+        }
+
+        .contact-info strong {
+            color: #FF6600;
+            min-width: 100px;
+        }
+
+        .contact-link {
+            color: #FF6600;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #FF9933;
+            text-decoration: underline;
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(90deg, #FF6600, #FF9933);
@@ -363,6 +392,12 @@
         footer p {
             font-size: 16px;
             margin-bottom: 10px;
+        }
+
+        .footer-contact {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         /* Responsive Design */
@@ -393,6 +428,12 @@
 
             .courses-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-info p {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
             }
         }
 
@@ -579,10 +620,10 @@
         <!-- Contact Section -->
         <div class="section" id="contact">
             <h2>📞 संपर्क करें</h2>
-            <div style="line-height: 2;">
+            <div class="contact-info">
                 <p><strong>पता:</strong> हिंदू एकता संघ, मुख्य कार्यालय, नई दिल्ली - 110001</p>
-                <p><strong>फोन:</strong> +91-11-12345678</p>
-                <p><strong>ईमेल:</strong> info@hinduektasangh.org</p>
+                <p><strong>फोन:</strong> <a href="tel:+917004398297" class="contact-link">+91 7004398297</a></p>
+                <p><strong>ईमेल:</strong> <a href="mailto:rm2778643@gmail.com" class="contact-link">rm2778643@gmail.com</a></p>
                 <p><strong>समय:</strong> सोमवार - शनिवार, 9:00 AM - 6:00 PM</p>
             </div>
         </div>
@@ -592,6 +633,9 @@
     <footer>
         <p>© 2025 हिंदू एकता संघ | सर्वाधिकार सुरक्षित</p>
         <p>🕉️ सत्यमेव जयते 🕉️</p>
+        <div class="footer-contact">
+            <p>📞 +91 7004398297 | 📧 rm2778643@gmail.com</p>
+        </div>
     </footer>
 
     <script>
