@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindu Ekta Sangh - हिंदू एकता संघ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF9933 0%, #FF6600 100%);
+            color: #333;
+        }
+
+        /* Animated Header */
+        header {
+            background: linear-gradient(90deg, #FF9933, #FF6600, #FF9933);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            animation: rotate 4s linear infinite;
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .site-title {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Animated Navigation */
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #FF6600;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transition: left 0.5s;
+        }
+
+        nav ul li a:hover::before {
+            left: 100%;
+        }
+
+        nav ul li a:hover {
+            background: #FF9933;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            color: #FF6600;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section h2 {
+            color: #FF6600;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #FF9933;
+            padding-bottom: 10px;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE6CC 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid #FF9933;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255,102,0,0.3);
+            border-color: #FF6600;
+        }
+
+        .course-card h3 {
+            color: #FF6600;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .course-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .course-duration {
+            color: #FF9933;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Auth Forms */
+        .auth-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .auth-form {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE6CC 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #FF9933;
+        }
+
+        .auth-form h3 {
+            color: #FF6600;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #FF6600;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #FF9933;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FF6600;
+            box-shadow: 0 0 10px rgba(255,102,0,0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #FF9933, #FF6600);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,102,0,0.4);
+        }
+
+        /* Upload/Download Section */
+        .file-operations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .file-box {
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE6CC 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #FF9933;
+            text-align: center;
+        }
+
+        .file-box h3 {
+            color: #FF6600;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #FF9933, #FF6600);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .file-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,102,0,0.4);
+        }
+
+        .download-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .download-list li {
+            padding: 10px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-list li:hover {
+            background: #FF9933;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #FF6600, #FF9933);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .site-title {
+                font-size: 22px;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .section h2 {
+                font-size: 24px;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Pulse Animation for Logo */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .logo:hover {
+            animation: pulse 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo">🕉️</div>
+                <div class="site-title">हिंदू एकता संघ</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">होम</a></li>
+            <li><a href="#about">हमारे बारे में</a></li>
+            <li><a href="#courses">कोर्सेज</a></li>
+            <li><a href="#auth">लॉगिन/साइनअप</a></li>
+            <li><a href="#files">अपलोड/डाउनलोड</a></li>
+            <li><a href="#events">कार्यक्रम</a></li>
+            <li><a href="#gallery">गैलरी</a></li>
+            <li><a href="#contact">संपर्क करें</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero" id="home">
+            <h1>🙏 हिंदू एकता संघ में आपका स्वागत है 🙏</h1>
+            <p>हमारा उद्देश्य हिंदू समाज में एकता, शिक्षा और सांस्कृतिक मूल्यों को बढ़ावा देना है। हम सभी को साथ लेकर एक मजबूत और समृद्ध समाज का निर्माण करते हैं।</p>
+        </div>
+
+        <!-- About Section -->
+        <div class="section" id="about">
+            <h2>हमारे बारे में</h2>
+            <p>हिंदू एकता संघ एक सामाजिक और सांस्कृतिक संगठन है जो हिंदू धर्म, संस्कृति और परंपराओं को संरक्षित करने के लिए समर्पित है। हम शिक्षा, सामाजिक सेवा और सांस्कृतिक कार्यक्रमों के माध्यम से समाज में सकारात्मक बदलाव लाने का प्रयास करते हैं।</p>
+            <p style="margin-top: 15px;">हमारे मुख्य उद्देश्य:</p>
+            <ul style="margin-left: 30px; margin-top: 10px; line-height: 2;">
+                <li>हिंदू समाज में एकता और भाईचारा बढ़ाना</li>
+                <li>वैदिक शिक्षा और संस्कृत का प्रचार-प्रसार</li>
+                <li>युवाओं को संस्कारित और शिक्षित करना</li>
+                <li>सामाजिक सेवा और धर्मार्थ कार्य</li>
+            </ul>
+        </div>
+
+        <!-- Courses Section -->
+        <div class="section" id="courses">
+            <h2>📚 हमारे कोर्सेज</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>वैदिक संस्कृत</h3>
+                    <p>संस्कृत भाषा और वैदिक साहित्य का गहन अध्ययन। वेद, उपनिषद और पुराणों का ज्ञान प्राप्त करें।</p>
+                    <div class="course-duration">⏱️ अवधि: 6 महीने</div>
+                </div>
+                <div class="course-card">
+                    <h3>योग और ध्यान</h3>
+                    <p>पारंपरिक योग, प्राणायाम और ध्यान की तकनीकें सीखें। शारीरिक और मानसिक स्वास्थ्य में सुधार करें।</p>
+                    <div class="course-duration">⏱️ अवधि: 3 महीने</div>
+                </div>
+                <div class="course-card">
+                    <h3>हिंदू दर्शन</h3>
+                    <p>भारतीय दर्शन के विभिन्न सिद्धांतों का अध्ययन। वेदांत, सांख्य, योग दर्शन की गहराई में जाएं।</p>
+                    <div class="course-duration">⏱️ अवधि: 4 महीने</div>
+                </div>
+                <div class="course-card">
+                    <h3>संस्कार और रीति-रिवाज</h3>
+                    <p>हिंदू संस्कारों, त्योहारों और परंपराओं का विस्तृत ज्ञान। पूजा-पाठ की विधियां सीखें।</p>
+                    <div class="course-duration">⏱️ अवधि: 2 महीने</div>
+                </div>
+                <div class="course-card">
+                    <h3>भगवद गीता अध्ययन</h3>
+                    <p>श्रीमद्भगवद्गीता का श्लोक-दर-श्लोक अध्ययन और व्याख्या। जीवन में गीता के सिद्धांतों का प्रयोग।</p>
+                    <div class="course-duration">⏱️ अवधि: 5 महीने</div>
+                </div>
+                <div class="course-card">
+                    <h3>आयुर्वेद परिचय</h3>
+                    <p>प्राचीन भारतीय चिकित्सा पद्धति आयुर्वेद का परिचय। स्वस्थ जीवन के लिए आयुर्वेदिक सिद्धांत।</p>
+                    <div class="course-duration">⏱️ अवधि: 3 महीने</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login/Signup Section -->
+        <div class="section" id="auth">
+            <h2>🔐 लॉगिन / साइनअप</h2>
+            <div class="auth-container">
+                <div class="auth-form">
+                    <h3>लॉगिन करें</h3>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label>ईमेल / यूजरनेम</label>
+                            <input type="text" placeholder="अपना ईमेल या यूजरनेम दर्ज करें" required>
+                        </div>
+                        <div class="form-group">
+                            <label>पासवर्ड</label>
+                            <input type="password" placeholder="अपना पासवर्ड दर्ज करें" required>
+                        </div>
+                        <button type="submit" class="btn">लॉगिन करें</button>
+                    </form>
+                </div>
+                <div class="auth-form">
+                    <h3>साइनअप करें</h3>
+                    <form id="signupForm">
+                        <div class="form-group">
+                            <label>पूरा नाम</label>
+                            <input type="text" placeholder="अपना पूरा नाम दर्ज करें" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ईमेल</label>
+                            <input type="email" placeholder="अपना ईमेल दर्ज करें" required>
+                        </div>
+                        <div class="form-group">
+                            <label>पासवर्ड</label>
+                            <input type="password" placeholder="पासवर्ड बनाएं" required>
+                        </div>
+                        <button type="submit" class="btn">साइनअप करें</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload/Download Section -->
+        <div class="section" id="files">
+            <h2>📁 अपलोड / डाउनलोड</h2>
+            <div class="file-operations">
+                <div class="file-box">
+                    <h3>फाइल अपलोड करें</h3>
+                    <p style="margin-bottom: 20px; color: #666;">अपनी फाइलें यहां अपलोड करें (PDF, Images, Documents)</p>
+                    <input type="file" id="fileUpload" class="file-input" multiple>
+                    <label for="fileUpload" class="file-label">📤 फाइल चुनें</label>
+                    <div id="uploadStatus" style="margin-top: 15px; color: #FF6600; font-weight: 600;"></div>
+                </div>
+                <div class="file-box">
+                    <h3>फाइल डाउनलोड करें</h3>
+                    <p style="margin-bottom: 20px; color: #666;">उपलब्ध फाइलें डाउनलोड करें</p>
+                    <ul class="download-list">
+                        <li>📄 वैदिक संस्कृत - पाठ्यक्रम.pdf</li>
+                        <li>📄 योग मुद्राएं - गाइड.pdf</li>
+                        <li>📄 भगवद गीता - हिंदी.pdf</li>
+                        <li>📄 संस्कार विधि - पुस्तिका.pdf</li>
+                        <li>📄 आयुर्वेद टिप्स.pdf</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Section -->
+        <div class="section" id="events">
+            <h2>🎉 आगामी कार्यक्रम</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>वार्षिक महासभा</h3>
+                    <p>हिंदू एकता संघ की वार्षिक महासभा में सभी सदस्यों की उपस्थिति आवश्यक है।</p>
+                    <div class="course-duration">📅 तिथि: 15 दिसंबर 2025</div>
+                </div>
+                <div class="course-card">
+                    <h3>योग शिविर</h3>
+                    <p>3 दिवसीय योग और ध्यान शिविर। प्रसिद्ध योग गुरुओं द्वारा प्रशिक्षण।</p>
+                    <div class="course-duration">📅 तिथि: 20-22 दिसंबर 2025</div>
+                </div>
+                <div class="course-card">
+                    <h3>संस्कृत सम्मेलन</h3>
+                    <p>संस्कृत भाषा और साहित्य पर राष्ट्रीय स्तर का सम्मेलन।</p>
+                    <div class="course-duration">📅 तिथि: 5 जनवरी 2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section" id="contact">
+            <h2>📞 संपर्क करें</h2>
+            <div style="line-height: 2;">
+                <p><strong>पता:</strong> हिंदू एकता संघ, मुख्य कार्यालय, नई दिल्ली - 110001</p>
+                <p><strong>फोन:</strong> +91-11-12345678</p>
+                <p><strong>ईमेल:</strong> info@hinduektasangh.org</p>
+                <p><strong>समय:</strong> सोमवार - शनिवार, 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 हिंदू एकता संघ | सर्वाधिकार सुरक्षित</p>
+        <p>🕉️ सत्यमेव जयते 🕉️</p>
+    </footer>
+
+    <script>
+        // Login Form Handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('लॉगिन सफल! आपका स्वागत है।');
+        });
+
+        // Signup Form Handler
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('साइनअप सफल! आपका खाता बन गया है।');
+        });
+
+        // File Upload Handler
+        document.getElementById('fileUpload').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const status = document.getElementById('uploadStatus');
+            if (files.length > 0) {
+                status.textContent = `✅ ${files.length} फाइल(एं) चुनी गई। अपलोड हो रही है...`;
+                setTimeout(() => {
+                    status.textContent = '✅ फाइल सफलतापूर्वक अपलोड हो गई!';
+                }, 1500);
+            }
+        });
+
+        // Download List Handler
+        document.querySelectorAll('.download-list li').forEach(item => {
+            item.addEventListener('click', function() {
+                alert('📥 डाउनलोड शुरू हो रहा है: ' + this.textContent);
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
